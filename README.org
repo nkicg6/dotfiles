@@ -1,0 +1,15 @@
+#+OPTIONS: toc:nil author:nil title:nil date:nil num:nil ^:{} \n:1 todo:nil
+#+PROPERTY: header-args :eval never-export
+
+* My dotfiles
+
+Set of files for configuring my macbook air.
+My =.emacs.d/= lives [[https://github.com/nkicg6/emacs-config][here]]. 
+I add the following line to the =.bash_profile= in my home directory and keep the =.bash_profile= in =~/bin/= under source control here
+
+#+BEGIN_SRC bash :results verbatim 
+source ~/bin/.bash_profile
+#+END_SRC
+
+After installing a homebrew package, I run =make= from this directory so I can keep a list of the packages I have installed via homebrew. 
+
