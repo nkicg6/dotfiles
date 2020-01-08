@@ -1,0 +1,6 @@
+adoptopenjdk
+adoptopenjdk8
+basictex
+emacs
+font-fira-code
+rectangle
