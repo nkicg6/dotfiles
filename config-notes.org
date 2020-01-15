@@ -1,0 +1,3 @@
+#+TITLE: Notes for settings and funny tricks for desktop settings. 
+* Firefox
+in about:config I set dom.event.clipboardevents.enabled to `false` to stop sites from stopping me from copy pasting my passwords and stuff. However, this makes copy-paste in google docs not work- so be warned!
