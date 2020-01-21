@@ -4,3 +4,4 @@ basictex
 emacs
 font-fira-code
 rectangle
+xquartz
