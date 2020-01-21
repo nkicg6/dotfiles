@@ -1,5 +1,5 @@
 # path
-export PATH=~/bin:$PATH
+export PATH=/usr/local/sbin:~/bin:$PATH
 # prompt 
 # from http://exprompt.net/
 export PS1="\u \[\e[34m\]\W\[\e[m\] \\$ "
