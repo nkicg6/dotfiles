@@ -5,10 +5,10 @@ export PS1="\u \[\e[34m\]\W\[\e[m\] \\$ "
 alias jupyter='pipenv run jupyter notebook'
 alias mnc='cd ~/Dropbox/lab_notebook/projects_and_data/mnc'
 alias ls='ls -aFG'
-# NEURON install
-export IDIR="/Applications/NEURON-7.5"
-export IV="$IDIR/iv"
-export N="$IDIR/nrn"
-export CPU=x86_64
+
 # path
-export PATH=$IV/$CPU/bin:$N/$CPU/bin:/usr/local/sbin:~/bin:$PATH
+export PATH=/usr/local/sbin:~/bin:$PATH
+
+# NEURON install
+export PATH="/Applications/NEURON-7.7/nrn/x86_64/bin":$PATH #added by NEURON installer
+export PYTHONPATH="/Applications/NEURON-7.7/nrn/lib/python":$PYTHONPATH #added by NEURON installer
