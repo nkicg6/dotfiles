@@ -4,6 +4,7 @@ automake
 clojure
 fontconfig
 freetype
+gcc
 gd
 gdbm
 gettext
@@ -12,12 +13,15 @@ gmp
 gnutls
 graphviz
 gts
+hwloc
+isl
 jasper
 jenv
 jpeg
 libevent
 libffi
 libidn2
+libmpc
 libpng
 libtasn1
 libtiff
@@ -25,8 +29,10 @@ libtool
 libunistring
 libyaml
 lua
+mpfr
 netpbm
 nettle
+open-mpi
 openssl@1.1
 p11-kit
 pcre
