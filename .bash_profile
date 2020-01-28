@@ -7,8 +7,17 @@ alias mnc='cd ~/Dropbox/lab_notebook/projects_and_data/mnc'
 alias ls='ls -aFG'
 
 # path
-export PATH=/usr/local/sbin:~/bin:$PATH
+export PATH=/usr/local/sbin:~/bin:~/.local/bin:$PATH
 
 # NEURON install
 export PATH="/Applications/NEURON-7.7/nrn/x86_64/bin":$PATH #added by NEURON installer
-export PYTHONPATH="/Applications/NEURON-7.7/nrn/lib/python":$PYTHONPATH #added by NEURON installer
+#export PYTHONPATH="/Applications/NEURON-7.7/nrn/lib/python":$PYTHONPATH #added by NEURON installer
+
+# virtualenvwrapper
+export WORKON_HOME=~/.ve
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3 
+source /usr/local/bin/virtualenvwrapper.sh
+
+# power chime stop!
+defaults write com.apple.PowerChime ChimeOnNoHardware -bool true
+

@@ -1,4 +1,4 @@
-#+TITLE: Notes for settings and tricks for desktop settings. 
+#+TITLE: Notes for settings/setup stuff and tricks for desktop settings.
 
 * Firefox
 in about:config I set dom.event.clipboardevents.enabled to `false` to stop sites from stopping me from copy pasting my passwords and stuff. However, this makes copy-paste in google docs not work- so be warned!
@@ -20,3 +20,18 @@ Stop icons from bouncing
 defaults write com.apple.dock no-bouncing -bool true
 killall dock
 #+END_SRC
+
+* python and virtualenv
+
+Use the default =venv= provided by python and also use [[https://virtualenvwrapper.readthedocs.io/en/latest/index.html][virtualenvwrapper]] to organize virtual envs
+
+1. start a new environment
+
+#+BEGIN_SRC bash :results verbatim 
+mkvirtualenv <env-name> 
+#+END_SRC
+
+Flag =--python=pythonX.X= to use different versions of python. Default is the one virtualenv was installed with, which is 3.7 in my case. 
+
+This command activates the environment too. You deactivate it by typing =deactivate= and activate in the future by typing =workon <env-name>=. Tab completion should work fine. 
+
