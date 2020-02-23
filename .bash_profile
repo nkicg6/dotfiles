@@ -20,3 +20,5 @@ source /usr/local/bin/virtualenvwrapper.sh
 # power chime stop!
 defaults write com.apple.PowerChime ChimeOnNoHardware -bool true
 
+# terminal emacs
+alias em="emacs -nw -q --load='~/.emacs.d/terminal_init.el'"
