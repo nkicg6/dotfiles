@@ -22,3 +22,15 @@ defaults write com.apple.PowerChime ChimeOnNoHardware -bool true
 
 # terminal emacs
 alias em="emacs -nw -q --load='~/.emacs.d/terminal_init.el'"
+
+# gopath
+export GOPATH=$HOME/go
+
+# custom cd to ls after showing it
+cls(){
+    /bin/cd $1; ls
+}
+
+mkdir(){
+    /bin/mkdir $1;cls $1;
+}

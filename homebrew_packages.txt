@@ -11,6 +11,7 @@ gettext
 glib
 gmp
 gnutls
+go
 graphviz
 gts
 hwloc
