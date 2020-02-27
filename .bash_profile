@@ -32,5 +32,5 @@ cls(){
 }
 
 mkdir(){
-    /bin/mkdir $1;cls $1;
+    /bin/mkdir $1;cd $1;ls
 }
