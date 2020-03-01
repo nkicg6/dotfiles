@@ -26,11 +26,6 @@ alias em="emacs -nw -q --load='~/.emacs.d/terminal_init.el'"
 # gopath
 export GOPATH=$HOME/go
 
-# custom cd to ls after showing it
-cls(){
-    /bin/cd $1; ls
-}
-
-mkdir(){
+mkdirs(){
     /bin/mkdir $1;cd $1;ls
 }
