@@ -10,7 +10,8 @@ export PATH=/usr/local/sbin:~/bin:~/.local/bin:$PATH
 
 # NEURON install
 export PATH="/Applications/NEURON-7.7/nrn/x86_64/bin":$PATH #added by NEURON installer
-#export PYTHONPATH="/Applications/NEURON-7.7/nrn/lib/python":$PYTHONPATH #added by NEURON installer
+# add rust to path
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # virtualenvwrapper
 export WORKON_HOME=~/.ve
@@ -22,9 +23,6 @@ defaults write com.apple.PowerChime ChimeOnNoHardware -bool true
 
 # terminal emacs
 alias em="emacs -nw -q --load='~/.emacs.d/terminal_init.el'"
-
-# gopath
-export GOPATH=$HOME/go
 
 mkdirs(){
     /bin/mkdir $1;cd $1;ls
