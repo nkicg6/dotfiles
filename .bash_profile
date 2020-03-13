@@ -23,7 +23,8 @@ defaults write com.apple.PowerChime ChimeOnNoHardware -bool true
 
 # terminal emacs
 alias em="emacs -nw -q --load='~/.emacs.d/terminal_init.el'"
-
+# clojure with rebel readline alias
+alias cljr='clj -A:rebel'
 mkdirs(){
     /bin/mkdir $1;cd $1;ls
 }
