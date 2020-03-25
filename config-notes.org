@@ -35,3 +35,5 @@ Flag =--python=pythonX.X= to use different versions of python. Default is the on
 
 This command activates the environment too. You deactivate it by typing =deactivate= and activate in the future by typing =workon <env-name>=. Tab completion should work fine. 
 
+* git 
+Stop windows line endings

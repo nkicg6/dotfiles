@@ -46,6 +46,7 @@ readline
 rlwrap
 ruby
 sqlite
+tcl-tk
 tree
 unbound
 vim
