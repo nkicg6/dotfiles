@@ -37,3 +37,5 @@ alias cljr='clj -A:rebel'
 mkdirs(){
     /bin/mkdir $1;cd $1;ls
 }
+# inkscape alias
+alias inkscape=/Applications/Inkscape.app/Contents/MacOS/Inkscape
