@@ -2,7 +2,7 @@
 # from http://exprompt.net/
 export PS1="\u \[\e[34m\]\W\[\e[m\] \\$ "
 # aliases
-alias jupyter='jupyter notebook'
+alias jpy='jupyter notebook'
 alias ls='ls -aFGt'
 alias mnc='cd ~/Dropbox/lab_notebook/projects_and_data/mnc; ls'
 
@@ -13,7 +13,7 @@ alias pip38='/Library/Frameworks/Python.framework/Versions/3.8/bin/pip3'
 # path
 export PATH=/usr/local/sbin:~/bin:~/.local/bin:$PATH
 
-# use downloaded python 3.8 not homebrew
+# use downloaded python 3.8 not homebrew python
 export PATH=/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH
 
 # NEURON install
