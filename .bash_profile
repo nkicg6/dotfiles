@@ -39,3 +39,6 @@ mkdirs(){
 }
 # inkscape alias
 alias inkscape=/Applications/Inkscape.app/Contents/MacOS/Inkscape
+
+# export for debugging/dev of qtabf explorer
+export DEBUG_DIR="/Users/nick/Dropbox/lab_notebook/projects_and_data/mnc/analysis_and_data/patch_clamp/data/passive_membrane_properties_2019-10-26"
