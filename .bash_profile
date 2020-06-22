@@ -12,7 +12,6 @@ alias pip38='/Library/Frameworks/Python.framework/Versions/3.8/bin/pip3'
 
 # path
 export PATH=/usr/local/sbin:~/bin:~/.local/bin:$PATH
-
 # use downloaded python 3.8 not homebrew python
 export PATH=/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH
 
@@ -42,3 +41,8 @@ alias inkscape=/Applications/Inkscape.app/Contents/MacOS/Inkscape
 
 # export for debugging/dev of qtabf explorer
 export DEBUG_DIR="/Users/nick/Dropbox/lab_notebook/projects_and_data/mnc/analysis_and_data/patch_clamp/data/passive_membrane_properties_2019-10-26"
+
+export DEBUG_LFP="/Users/nick/Dropbox/lab_notebook/projects_and_data/mnc/analysis_and_data/extracellular_lfp/data/2020-03-11"
+#Ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
