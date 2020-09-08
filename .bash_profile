@@ -42,10 +42,10 @@ mkdirs(){
 # inkscape alias
 alias inkscape=/Applications/Inkscape.app/Contents/MacOS/Inkscape
 
+# for pipx via `userpath`
+export PATH="$PATH:/Users/nick/Library/Python/3.8/bin"
+
 # export for debugging/dev of qtabf explorer
 export DEBUG_DIR="/Users/nick/Dropbox/lab_notebook/projects_and_data/mnc/analysis_and_data/patch_clamp/data/passive_membrane_properties_2019-10-26"
 
 export DEBUG_LFP="/Users/nick/Dropbox/lab_notebook/projects_and_data/mnc/analysis_and_data/extracellular_lfp/data/2020-03-14"
-
-# miniconda to path
-export PATH="/Users/nick/miniconda3/bin:$PATH"
