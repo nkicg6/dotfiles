@@ -2,4 +2,4 @@
 
 update:
 	brew list > homebrew_packages.txt
-	brew cask list > homebrew_cask_packages.txt
+	brew list --cask > homebrew_cask_packages.txt
