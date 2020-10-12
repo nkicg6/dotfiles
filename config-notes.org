@@ -2,6 +2,10 @@
 
 * Firefox
 in about:config I set dom.event.clipboardevents.enabled to `false` to stop sites from stopping me from copy pasting my passwords and stuff. However, this makes copy-paste in google docs not work- so be warned!
+* vim
+=.vimrc= is kept here under version control. On a new system, simply create a symbolic link to your home directory:
+
+=ln -s ~/bin/.vimrc ~/.vimrc=
 
 * Apple defaults
 
