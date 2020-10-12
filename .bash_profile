@@ -49,3 +49,6 @@ export PATH="$PATH:/Users/nick/Library/Python/3.8/bin"
 export DEBUG_DIR="/Users/nick/Dropbox/lab_notebook/projects_and_data/mnc/analysis_and_data/patch_clamp/data/passive_membrane_properties_2019-10-26"
 
 export DEBUG_LFP="/Users/nick/Dropbox/lab_notebook/projects_and_data/mnc/analysis_and_data/extracellular_lfp/data/2020-03-14"
+
+# source private env vars
+source .private_env_vars
