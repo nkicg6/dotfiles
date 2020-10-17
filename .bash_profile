@@ -3,7 +3,7 @@
 export PS1="\u \[\e[34m\]\W\[\e[m\] \\$ "
 # aliases
 alias jpy='jupyter notebook'
-alias ls='ls -aFGt'
+alias lss='ls -aFGth'
 alias mnc='cd ~/Dropbox/lab_notebook/projects_and_data/mnc; ls'
 
 # download installed  python 3.8

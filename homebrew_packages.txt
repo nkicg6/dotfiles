@@ -8,6 +8,7 @@ bdw-gc
 cairo
 clinfo
 clojure
+ctags
 dav1d
 ffmpeg
 flac
@@ -64,6 +65,7 @@ libyaml
 little-cms2
 lua
 lzo
+minimal-racket
 mpfr
 netpbm
 nettle
