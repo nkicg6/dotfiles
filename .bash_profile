@@ -52,3 +52,7 @@ export DEBUG_LFP="/Users/nick/Dropbox/lab_notebook/projects_and_data/mnc/analysi
 
 # source private env vars
 source .private_env_vars
+
+# tox setup from https://www.youtube.com/watch?v=PrAyvH-tm8E
+
+

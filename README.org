@@ -13,3 +13,14 @@ source ~/bin/.bash_profile
 
 After installing a homebrew package, I run =make= from this directory so I can keep a list of the packages I have installed via homebrew. 
 
+* Tox setup
+Based on https://www.youtube.com/watch?v=PrAyvH-tm8E 
+
+#+BEGIN_SRC bash :results verbatim
+python3 -m venv ~/.toxbase
+~/.toxbase/bin/pip install tox
+~/.toxbase/bin/tox --version
+# should work!
+# Now link it to your bin so you can use it everywhere
+ln -s /Users/nick/.toxbase/bin/tox /Users/nick/bin/tox
+#+END_SRC
