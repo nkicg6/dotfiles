@@ -3,14 +3,13 @@
 export PS1="\u \[\e[34m\]\W\[\e[m\] \\$ "
 
 # aliases
-alias jpy='jupyter notebook'
 alias lss='ls -aFGth'
 alias mnc='cd ~/Dropbox/lab_notebook/projects_and_data/mnc; ls'
 
 # Basics
 export PATH=/usr/local/sbin:~/bin:~/.local/bin:$PATH
 
-#Ruby
+# Ruby
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 
@@ -27,7 +26,7 @@ export PATH=$PATH:$PY37:$PY39
 
 # python virtualenvwrapper
 export WORKON_HOME=~/.ve
-export VIRTUALENVWRAPPER_PYTHON="$PY38/python3.8" #/Library/Frameworks/Python.framework/Versions/3.8/bin/python3.8
+export VIRTUALENVWRAPPER_PYTHON="$PY38/python3.8"
 source /usr/local/bin/virtualenvwrapper.sh
 
 # NEURON install
@@ -41,21 +40,20 @@ defaults write com.apple.PowerChime ChimeOnNoHardware -bool true
 
 # terminal emacs
 alias em="emacs -nw -q --load='~/.emacs.d/terminal_init.el'"
+
 # clojure with rebel readline alias
 alias cljr='clj -A:rebel'
 mkdirs(){
     /bin/mkdir $1;cd $1;ls
 }
+
 # inkscape alias
 alias inkscape=/Applications/Inkscape.app/Contents/MacOS/Inkscape
 
-# export for debugging/dev of qtabf explorer
-export DEBUG_DIR="/Users/nick/Dropbox/lab_notebook/projects_and_data/mnc/analysis_and_data/patch_clamp/data/passive_membrane_properties_2019-10-26"
-
-export DEBUG_LFP="/Users/nick/Dropbox/lab_notebook/projects_and_data/mnc/analysis_and_data/extracellular_lfp/data/2020-03-14"
+# homebrew qt
+export PATH="/usr/local/opt/qt/bin:$PATH"
 
 # source private env vars
 source .private_env_vars
 
-# homebrew qt
-export PATH="/usr/local/opt/qt/bin:$PATH"
+
