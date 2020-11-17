@@ -86,6 +86,7 @@ pkg-config
 python
 python@3.8
 python@3.9
+qt
 rav1e
 readline
 rlwrap
