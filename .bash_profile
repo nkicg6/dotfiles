@@ -53,6 +53,8 @@ export DEBUG_LFP="/Users/nick/Dropbox/lab_notebook/projects_and_data/mnc/analysi
 # source private env vars
 source .private_env_vars
 
-# tox setup from https://www.youtube.com/watch?v=PrAyvH-tm8E
+# Other python versions for tox setup from https://www.youtube.com/watch?v=PrAyvH-tm8E
+PATH=$PATH:"/Library/Frameworks/Python.framework/Versions/3.9/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin"
 
-
+# homebrew qt
+export PATH="/usr/local/opt/qt/bin:$PATH"`
