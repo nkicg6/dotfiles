@@ -3,7 +3,7 @@
 export PS1="\u \[\e[34m\]\W\[\e[m\] \\$ "
 
 # aliases
-alias lss='ls -aFGth'
+alias lss='ls -aFGtlh'
 alias mnc='cd ~/Dropbox/lab_notebook/projects_and_data/mnc; ls'
 
 # Basics
@@ -54,6 +54,7 @@ alias inkscape=/Applications/Inkscape.app/Contents/MacOS/Inkscape
 export PATH="/usr/local/opt/qt/bin:$PATH"
 
 # source private env vars
-source .private_env_vars
+source "$HOME/.private_env_vars"
 
-
+# golang
+export GOPATH="$HOME/go"
