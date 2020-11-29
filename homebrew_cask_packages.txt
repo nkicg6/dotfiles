@@ -5,3 +5,4 @@ emacs
 font-fira-code
 rectangle
 vlc
+wkhtmltopdf

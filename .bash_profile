@@ -6,7 +6,7 @@ export PS1="\u \[\e[34m\]\W\[\e[m\] \\$ "
 alias lss='ls -aFGtlh'
 alias mnc='cd ~/Dropbox/lab_notebook/projects_and_data/mnc; ls'
 
-# Basics
+# Basics: homebrew bin, personal bin
 export PATH=/usr/local/sbin:~/bin:~/.local/bin:$PATH
 
 # Ruby
@@ -58,3 +58,6 @@ source "$HOME/.private_env_vars"
 
 # golang
 export GOPATH="$HOME/go"
+
+# FontForge
+alias ff="/Applications/FontForge.app/Contents/MacOS/FontForge"
