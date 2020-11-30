@@ -67,6 +67,7 @@ lua
 lzo
 minimal-racket
 mpfr
+nasm
 netpbm
 nettle
 node
