@@ -59,5 +59,10 @@ source "$HOME/.private_env_vars"
 # golang
 export GOPATH="$HOME/go"
 
+alias gotest="go test -v --bench . --benchmem"
+# go utils 
+export PATH="~/go/bin/:$PATH"
+
 # FontForge
 alias ff="/Applications/FontForge.app/Contents/MacOS/FontForge"
+
