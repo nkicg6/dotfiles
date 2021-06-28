@@ -2,13 +2,34 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/nick/.oh-my-zsh"
-
+export PATH="/Users/nick/bin/:$PATH"
 # Set name of the theme to load --- if set to "random", it will
+# Python setup
+PY37="/Library/Frameworks/Python.framework/Versions/3.7/bin"
+PY38="/Library/Frameworks/Python.framework/Versions/3.8/bin"
+PY39="/Library/Frameworks/Python.framework/Versions/3.9/bin"
+
+# main python version
+export PATH=$PY39:$PATH
+
+# Other python versions for tox setup (end of path) from https://www.youtube.com/watch?v=PrAyvH-tm8E
+export PATH=$PATH:$PY38:$PY37
+
+# python virtualenvwrapper
+export WORKON_HOME=~/.ve
+export VIRTUALENVWRAPPER_PYTHON="$PY39/python3.9"
+source /usr/local/bin/virtualenvwrapper.sh
+
+
+
+
+
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
-
+# see https://zshthem.es/all/
+# daveverwer and dieter 
+ZSH_THEME="daveverwer"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/

@@ -7,7 +7,8 @@ call plug#end()
 " call :PlugInstall to install new packages
 
 :colorscheme lucius
-LuciusDark 
+"LuciusDark 
+LuciusLight
 " LuciusDarkHighContrast his also cool
 " Stop allowing arrowkeys for practice
 noremap <Up> <Nop>

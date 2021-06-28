@@ -32,4 +32,7 @@ python3 -m venv ~/.toxbase
 ln -s ~/.toxbase/bin/tox ~/bin/tox
 ```
 
+## MacOS settings
+Disable font smoothing
 
+`defaults -currentHost write -g AppleFontSmoothing -int 0`
