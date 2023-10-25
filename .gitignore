@@ -19,3 +19,5 @@ emacs/.emacs.d/.lsp-*
 emacs/.emacs.d/.dap-*
 emacs/.emacs.d/abbrev*
 emacs/.emacs.d/.extension
+emacs/.emacs.d/org-clock*
+emacs/.emacs.d/custom.el*

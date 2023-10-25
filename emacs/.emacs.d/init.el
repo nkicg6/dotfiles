@@ -100,7 +100,6 @@
 ;;;; Other visual configs ;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(highlight-indentation-mode nil)
 
 (size-indication-mode 1)
 
@@ -182,7 +181,7 @@
         ("WAITING" :foreground "black" :background "grey" :weight bold)
         ("DONE" :foreground "#2D6B2D" :weight bold)
         ("CANCELLED" :foreground "#2D6B2D")))
-(setq org-agenda-files (directory-files-recursively "~/orgs/" "\\.org$"))
+;;(setq org-agenda-files (directory-files-recursively "~/orgs/" "\\.org$"))
 (setq org-latex-prefer-use-labels t)
 (setq org-clock-idle-time 15)
 (org-clock-persistence-insinuate)

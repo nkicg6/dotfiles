@@ -19,6 +19,10 @@
       ansible.builtin.stat: path=$HOME/.emacs.d/init.el
       register: init_link
 
+    - name: check status of zsh stow link 
+      ansible.builtin.stat: path=$HOME/.zshrc
+      register: zshrc_link 
+
     - name: check status of dotfiles repo
       ansible.builtin.stat: path=$HOME/dotfiles
       register: dotfiles_exists
@@ -68,3 +72,10 @@
       args:
         chdir: $HOME/dotfiles
       when: init_link.stat.islnk is not defined
+
+    - name: stow zshrc
+      ansible.builtin.shell: stow zsh
+      args:
+        chdir: $HOME/dotfiles
+      when: zshrc_link.stat.islnk is not defined
+
