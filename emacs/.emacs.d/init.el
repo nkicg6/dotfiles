@@ -8,9 +8,10 @@
 (setq inhibit-startup-message t)
 (setq initial-scratch-message "")
 (setq package-enable-at-startup nil)
-(setq package-archives  '(("melpa" . "http://melpa.org/packages/")
-                          ("gnu" . "http://elpa.gnu.org/packages/")
-                          ("org" . "http://orgmode.org/elpa/")))
+(setq package-archives  '(("melpa" . "https://melpa.org/packages/")
+                          ("elpa" . "https://elpa.gnu.org/packages/")
+                          ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+                          ("org" . "https://orgmode.org/elpa/")))
 ;; set up package
 (eval-when-compile
   (require 'package)
@@ -153,6 +154,8 @@
 ;;    (org-mode . org-bullets-mode) 
 ;;    (org-mode . visual-line-mode) 
 ;;    (org-mode . electric-pair-mode)))
+(use-package org-contrib 
+             :defer t)
 (add-hook 'org-mode-hook  (lambda () (setq truncate-lines nil)))
 (with-eval-after-load 'org
   (add-hook 'org-mode-hook #'flyspell-mode)
@@ -591,7 +594,6 @@ See `https://github.com/aws-cloudformation/cfn-python-lint'."
       create-lockfiles nil) ;; lock files will kill `npm start'
 
 (with-eval-after-load 'lsp-mode
-  (require 'dap-chrome)
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
   (yas-global-mode))
 
