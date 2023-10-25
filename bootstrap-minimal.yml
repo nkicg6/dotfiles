@@ -59,13 +59,23 @@
           - git
          state: latest 
       when: ansible_distribution == "Ubuntu"
-    - name: clone dotfiles
-      ansible.builtin.git:
-        repo: https://github.com/nkicg6/dotfiles.git
-        clone: true
-        dest: $HOME/dotfiles
-      when: dotfiles_exists.stat.isdir is not defined 
         
+    - name: clone dotfiles
+      block:
+        - name: Clone with ssh
+          ansible.builtin.git:
+            repo: git@github.com:nkicg6/dotfiles.git
+            clone: true
+            dest: $HOME/dotfiles
+            update: yes
+      rescue:
+        - name: Clone wiht HTTPS if ssh fails
+          ansible.builtin.git:
+            repo: https://github.com/nkicg6/dotfiles.git
+            clone: true
+            dest: $HOME/dotfiles
+            update: yes
+          
     - name: stow vim
       ansible.builtin.shell: stow vim
       args:
