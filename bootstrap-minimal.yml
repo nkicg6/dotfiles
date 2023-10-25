@@ -14,10 +14,14 @@
         upgrade: yes 
         update_cache: yes
       when: ansible_distribution == "Ubuntu"
+
     - name: check status of vimrc stow link 
       ansible.builtin.stat: path=$HOME/.vimrc
       register: vimrc_link
 
+    - name: check status of dotfiles repo
+      ansible.builtin.stat: path=$HOME/dotfiles
+      register: dotfiles_exists
 
   tasks:
     - name: Install essentials (MacOS)
@@ -51,7 +55,13 @@
           - git
          state: latest 
       when: ansible_distribution == "Ubuntu"
-
+    - name: clone dotfiles
+      ansible.builtin.git:
+        repo: https://github.com/nkicg6/dotfiles.git
+        clone: true
+        dest: $HOME
+      when: dotfiles_exists.stat.isdir is not defined 
+        
     - name: stow dotfiles
       ansible.builtin.shell: stow vim
       when: vimrc_link.stat.islnk is not defined
