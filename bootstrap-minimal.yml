@@ -59,9 +59,11 @@
       ansible.builtin.git:
         repo: https://github.com/nkicg6/dotfiles.git
         clone: true
-        dest: $HOME
+        dest: $HOME/dotfiles
       when: dotfiles_exists.stat.isdir is not defined 
         
     - name: stow dotfiles
       ansible.builtin.shell: stow vim
+      args:
+        chdir: $HOME/dotfiles
       when: vimrc_link.stat.islnk is not defined
