@@ -1,0 +1,57 @@
+---
+- hosts: localhost
+  pre_tasks: 
+    - name: Update dnf cache (Rocky)
+      become: yes
+      ansible.builtin.dnf:
+        update_only: yes
+        update_cache: yes
+      when: ansible_distribution == "Rocky"
+
+    - name: Update apt cache (Ubuntu)
+      become: yes
+      ansible.builtin.apt:
+        upgrade: yes 
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+    - name: check status of vimrc stow link 
+      ansible.builtin.stat: path=$HOME/.vimrc
+      register: vimrc_link
+
+
+  tasks:
+    - name: Install essentials (MacOS)
+      #requires ansible-galaxy collection install community.general
+      community.general.homebrew:
+        name: 
+          - vim
+          - stow
+          - git
+        state: latest 
+        update_homebrew: false
+        upgrade_all: false
+      when: ansible_distribution == "MacOSX"
+        
+    - name: Install vim (Rocky)
+      become: yes
+      ansible.builtin.dnf:
+        name: 
+          - vim
+          - stow
+          - git
+        state: latest 
+      when: ansible_distribution == "Rocky"
+
+    - name: Install vim (Ubuntu)
+      become: yes
+      ansible.builtin.apt:
+         name: 
+          - vim
+          - stow
+          - git
+         state: latest 
+      when: ansible_distribution == "Ubuntu"
+
+    - name: stow dotfiles
+      ansible.builtin.shell: stow vim
+      when: vimrc_link.stat.islnk is not defined
