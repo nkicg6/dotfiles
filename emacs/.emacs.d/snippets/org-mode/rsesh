@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: rsesh
+# key: rs
+# --
+
+#+begin_src R :session *rsesh* :results output
+
+$0
+
+#+end_src

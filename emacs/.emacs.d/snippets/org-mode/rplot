@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: rplot
+# key: rp
+# --
+
+#+begin_src R :session *rsesh* :file figures/$1.png :results output graphics file
+
+$0
+
+#+end_src

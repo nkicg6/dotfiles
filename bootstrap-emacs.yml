@@ -1,0 +1,70 @@
+---
+- hosts: localhost
+  pre_tasks: 
+    - name: Update dnf cache (Rocky)
+      become: yes
+      ansible.builtin.dnf:
+        update_only: yes
+        update_cache: yes
+      when: ansible_distribution == "Rocky"
+
+    - name: Update apt cache (Ubuntu)
+      become: yes
+      ansible.builtin.apt:
+        upgrade: yes 
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+
+    - name: check status of init.el stow link 
+      ansible.builtin.stat: path=$HOME/.emacs.d/init.el
+      register: init_link
+
+    - name: check status of dotfiles repo
+      ansible.builtin.stat: path=$HOME/dotfiles
+      register: dotfiles_exists
+
+  tasks:
+    - name: Install essentials (MacOS)
+      #requires ansible-galaxy collection install community.general
+      community.general.homebrew:
+        name: 
+          - emacs 
+          - stow
+          - git
+        state: latest 
+        update_homebrew: false
+        upgrade_all: false
+      when: ansible_distribution == "MacOSX"
+        
+    - name: Install emacs (Rocky)
+      become: yes
+      ansible.builtin.dnf:
+        name: 
+          - emacs 
+          - stow
+          - git
+        state: latest 
+      when: ansible_distribution == "Rocky"
+
+    - name: Install emacs (Ubuntu)
+      become: yes
+      ansible.builtin.apt:
+         name: 
+          - emacs 
+          - stow
+          - git
+         state: latest 
+      when: ansible_distribution == "Ubuntu"
+    - name: clone dotfiles
+      ansible.builtin.git:
+        repo: https://github.com/nkicg6/dotfiles.git
+        clone: true
+        update: yes
+        dest: $HOME/dotfiles
+          #when: dotfiles_exists.stat.isdir is not defined 
+        
+    - name: stow dotfiles
+      ansible.builtin.shell: stow emacs
+      args:
+        chdir: $HOME/dotfiles
+      when: init_link.stat.islnk is not defined

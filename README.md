@@ -15,3 +15,8 @@ Use via `ansible-pull`:
 ```
 ansible-pull -U https://github.com/nkicg6/dotfiles.git bootstrap-minimal.yml
 ```
+
+## TODO
+
+* Refactor bootstrap into tasks, create a bootstrap full version too (vim and emacs while transitioning).
+* Create a remove all playbook to remove symbolic links. 
