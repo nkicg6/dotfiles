@@ -31,6 +31,9 @@ nnoremap <leader>pv :Ex<CR>
 " source vimrc
 nnoremap <leader><CR> :so $HOME/.vimrc<CR> 
 
+" better Grep
+command! -nargs=+ Grep execute 'silent vimgrep! <args>' | copen
+
 " plugins
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -48,3 +51,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'hashivim/vim-terraform'
 call plug#end()
+
+" fzf remaps
+nnoremap <C-p> :GFiles<CR>
+nnoremap <leader>pf :Files<CR>
