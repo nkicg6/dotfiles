@@ -34,6 +34,10 @@ nnoremap <leader><CR> :so $HOME/.vimrc<CR>
 " better Grep
 command! -nargs=+ Grep execute 'silent vimgrep! <args>' | copen
 
+" quickfix customizations
+nnoremap <C-j> :cnext<CR>
+nnoremap <C-k> :cprev<CR>
+
 " plugins
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
