@@ -1,0 +1,26 @@
+---
+- name: Install essentials (MacOS)
+  #requires ansible-galaxy collection install community.general
+  community.general.homebrew:
+    name: "{{ dependencies }}"
+    state: latest
+    update_homebrew: false
+    upgrade_all: false
+  when: ansible_distribution == "MacOSX"
+
+- name: Install vim (Rocky)
+  become: yes
+  ansible.builtin.dnf:
+    name: "{{ dependencies }}"
+    state: latest
+    update_cache: true
+  when: ansible_distribution == "Rocky"
+
+- name: Install vim (Ubuntu)
+  become: yes
+  ansible.builtin.apt:
+    name: "{{ dependencies }}"
+    state: latest
+    update_cache: true
+  when: ansible_distribution == "Ubuntu"
+

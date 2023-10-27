@@ -1,90 +1,21 @@
 ---
 - hosts: localhost
-  pre_tasks: 
-    - name: Update dnf cache (Rocky)
-      become: yes
-      ansible.builtin.dnf:
-        update_only: yes
-        update_cache: yes
-      when: ansible_distribution == "Rocky"
-
-    - name: Update apt cache (Ubuntu)
-      become: yes
-      ansible.builtin.apt:
-        upgrade: yes 
-        update_cache: yes
-      when: ansible_distribution == "Ubuntu"
-
-    - name: check status of init.el stow link 
-      ansible.builtin.stat: path=$HOME/.emacs.d/init.el
-      register: init_link
-
-    - name: check status of zsh stow link 
-      ansible.builtin.stat: path=$HOME/.zshrc
-      register: zshrc_link 
-
-    - name: check status of dotfiles repo
-      ansible.builtin.stat: path=$HOME/dotfiles
-      register: dotfiles_exists
-
+  vars:
+    dependencies:
+      - emacs 
+      - stow
+      - git
+  roles:
+    - dotfiles
+    - install
   tasks:
-    - name: Install essentials (MacOS)
-      #requires ansible-galaxy collection install community.general
-      community.general.homebrew:
-        name: 
-          - emacs 
-          - stow
-          - git
-        state: latest 
-        update_homebrew: false
-        upgrade_all: false
-      when: ansible_distribution == "MacOSX"
-        
-    - name: Install emacs (Rocky)
-      become: yes
-      ansible.builtin.dnf:
-        name: 
-          - emacs 
-          - stow
-          - git
-        state: latest 
-      when: ansible_distribution == "Rocky"
-
-    - name: Install emacs (Ubuntu)
-      become: yes
-      ansible.builtin.apt:
-         name: 
-          - emacs 
-          - stow
-          - git
-         state: latest 
-      when: ansible_distribution == "Ubuntu"
-
-    - name: clone dotfiles
-      block:
-        - name: Clone with ssh
-          ansible.builtin.git:
-            repo: git@github.com:nkicg6/dotfiles.git
-            clone: true
-            dest: $HOME/dotfiles
-            update: yes
-      rescue:
-        - name: Clone wiht HTTPS if ssh fails
-          ansible.builtin.git:
-            repo: https://github.com/nkicg6/dotfiles.git
-            clone: true
-            dest: $HOME/dotfiles
-            update: yes
-        
-    - name: stow dotfiles
-      ansible.builtin.shell: stow emacs
-      args:
-        chdir: $HOME/dotfiles
-      when: init_link.stat.islnk is not defined
-
     - name: stow zshrc
       ansible.builtin.shell: stow zsh
       args:
         chdir: $HOME/dotfiles
-      when: zshrc_link.stat.islnk is not defined
+          
+    - name: stow emacs 
+      ansible.builtin.shell: stow emacs
+      args:
+        chdir: $HOME/dotfiles
 
