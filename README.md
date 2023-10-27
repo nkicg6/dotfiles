@@ -2,9 +2,9 @@
 
 Quickly get up and running in a dev environment with essential tools using ansible and stow. 
 
-The playbook should install properly on MacOS, Ubuntu, and Rocky linux. 
+The playbook should install properly on MacOS, Ubuntu, and Rocky linux (if you have sudo privileges)
 
-For MacOS, ensure you have `homebrew` and ansible community.general installed:
+For MacOS, ensure you have `homebrew` and ansible's `community.general` installed:
 
 ```ansible-galaxy collection install community.general```
 
@@ -18,5 +18,4 @@ ansible-pull -U https://github.com/nkicg6/dotfiles.git bootstrap-minimal.yml
 
 ## TODO
 
-* Refactor bootstrap into tasks, create a bootstrap full version too (vim and emacs while transitioning).
 * Create a remove all playbook to remove symbolic links. 
