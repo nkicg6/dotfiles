@@ -1,10 +1,11 @@
 " defaults
 set scrolloff=8
 set rnu
+set nu
 set encoding=utf-8
 set noerrorbells
-set tabstop=4 softtabstop=4
 set smartindent expandtab autoindent
+set shiftwidth=2 tabstop=2 tabstop=2 softtabstop=2
 set backspace=eol,start
 set showcmd
 syntax on
@@ -16,11 +17,7 @@ set hlsearch
 set ignorecase smartcase
 
 " python
-autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
-
-" c and go
-autocmd FileType c setlocal shiftwidth=2 tabstop=2
-autocmd FileType go setlocal shiftwidth=2 tabstop=2
+autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 
 " bindings
 let mapleader = ' '
@@ -39,7 +36,7 @@ nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprev<CR>
 
 " plugins
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+let data_dir = '$HOME/.vim' " has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $HOME/.vimrc
@@ -50,7 +47,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $HOME/.vimrc
 \| endif
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('$HOME/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'hashivim/vim-terraform'
