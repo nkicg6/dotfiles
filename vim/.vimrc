@@ -7,7 +7,7 @@ set noerrorbells
 set smartindent expandtab autoindent
 set shiftwidth=2 tabstop=2 tabstop=2 softtabstop=2
 set backspace=eol,start
-set showcmd
+set showcmd title
 syntax on
 
 " search

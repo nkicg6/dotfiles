@@ -5,6 +5,7 @@
       - emacs 
       - stow
       - git
+      - tmux
   roles:
     - dotfiles
     - install
