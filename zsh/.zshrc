@@ -23,14 +23,16 @@ export PS1="%B[%D %*] %F{green}%n%f%F{black}@%f%F{green}%m%f:%F{cyan}%~%f \${vcs
 export LANG=en_US.UTF-8
 
 export EDITOR='vim'
+
 # personal bin
-export PATH="/Users/nicholasgeorge/bin":$PATH
+export PATH="$HOME/bin":$PATH
+export PATH="$HOME/dotfiles/bin":$PATH
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 export CGO_ENABLED=1
 
-# Python setup 
+# Python setup MacOS
 PY36="/Library/Frameworks/Python.framework/Versions/3.6/bin"
 PY38="/Library/Frameworks/Python.framework/Versions/3.8/bin"
 PY39="/Library/Frameworks/Python.framework/Versions/3.9/bin"

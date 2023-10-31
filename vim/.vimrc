@@ -31,6 +31,9 @@ nnoremap <leader><CR> :so $HOME/.vimrc<CR>
 " better Grep
 command! -nargs=+ Grep execute 'silent vimgrep! <args>' | copen
 
+" exe
+nnoremap <leader>x :silent !chmod +x %<CR>
+
 " quickfix customizations
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprev<CR>
