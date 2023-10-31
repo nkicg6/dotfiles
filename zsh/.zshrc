@@ -12,7 +12,9 @@ setopt interactivecomments
 autoload -U select-word-style 
 autoload -U +X bashcompinit && bashcompinit
 select-word-style bash
-
+# use emacs keybindings. fixes issue in iterm/zsh/tmux
+# where tmux was intercepting Ctrl-a/e and adding ^A/^E
+bindkey -e
 zstyle ':vcs_info:*' formats '(%b)'
 export CLICOLOR=1
 export PS1="%B[%D %*] %F{green}%n%f%F{black}@%f%F{green}%m%f:%F{cyan}%~%f \${vcs_info_msg_0_}
