@@ -12,17 +12,17 @@ setopt interactivecomments
 autoload -U select-word-style 
 autoload -U +X bashcompinit && bashcompinit
 select-word-style bash
-# use emacs keybindings. fixes issue in iterm/zsh/tmux
-# where tmux was intercepting Ctrl-a/e and adding ^A/^E
-bindkey -e
-zstyle ':vcs_info:*' formats '(%b)'
-export CLICOLOR=1
-export PS1="%B[%D %*] %F{green}%n%f%F{black}@%f%F{green}%m%f:%F{cyan}%~%f \${vcs_info_msg_0_}
-%%%b "
+  # use emacs keybindings. fixes issue in iterm/zsh/tmux
+  # where tmux was intercepting Ctrl-a/e and adding ^A/^E
+  bindkey -e
+  zstyle ':vcs_info:*' formats '(%b)'
+  export CLICOLOR=1
+  export PS1="%B[%D %*] %F{green}%n%f%F{black}@%f%F{green}%m%f:%F{cyan}%~%f \${vcs_info_msg_0_}
+  %%%b "
 
-export LANG=en_US.UTF-8
+  export LANG=en_US.UTF-8
 
-export EDITOR='vim'
+  export EDITOR='vim'
 
 # personal bin
 export PATH="$HOME/bin":$PATH
@@ -43,3 +43,10 @@ export PIP_REQUIRE_VIRTUALENV=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
+
+
+if [[ $(uname) == "Darwin" ]]; then
+  alias xclip=pbcopy
+fi
+
+bindkey -s '^f' "$HOME/bin/tmux-fzf.sh\n"

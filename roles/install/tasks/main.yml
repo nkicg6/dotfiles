@@ -24,3 +24,19 @@
     update_cache: true
   when: ansible_distribution == "Ubuntu"
 
+- name: Install xclip (Rocky)
+  become: yes
+  ansible.builtin.dnf:
+    name: xclip
+    state: present
+    update_cache: true
+  when: ansible_distribution == "Rocky"
+
+- name: Install xclip (Ubuntu)
+  become: yes
+  ansible.builtin.apt:
+    name: xclip
+    state: present
+    update_cache: true
+  when: ansible_distribution == "Ubuntu"
+

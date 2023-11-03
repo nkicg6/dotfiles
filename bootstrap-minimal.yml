@@ -25,3 +25,14 @@
       args:
         chdir: $HOME/dotfiles
 
+    - name: stow tmux
+      ansible.builtin.shell: stow tmux 
+      args:
+        chdir: $HOME/dotfiles
+
+    - name: stow bin 
+      ansible.builtin.shell: stow bin 
+      args:
+        chdir: $HOME/dotfiles
+
+
