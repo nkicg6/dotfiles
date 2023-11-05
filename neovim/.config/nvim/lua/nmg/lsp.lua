@@ -1,7 +1,17 @@
 local lspconfig = require("lspconfig")
-
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+function setsign()
+  if vim.tbl_isempty(vim.lsp.buf_get_clients()) then
+    vim.opt.signcolumn = "auto"
+  else
+    vim.opt.signcolumn = "yes"
+  end
+end
+
+--autocmd BufEnter
+vim.cmd([[ autocmd! BufEnter :lua 'setsign()' ]])
 
 -- golang
 lspconfig.gopls.setup({
