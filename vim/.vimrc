@@ -59,6 +59,9 @@ call plug#begin('$HOME/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'hashivim/vim-terraform'
+Plug 'jacoborus/tender.vim'
+Plug 'morhetz/gruvbox'
+Plug 'ayu-theme/ayu-vim'
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/nvim-cmp'
@@ -70,6 +73,14 @@ if has('nvim')
   Plug 'hashivim/vim-terraform'
 endif
 call plug#end()
+" color scheme
+set background=dark
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+colo tender
 
 " fzf remaps
 nnoremap <C-p> :GFiles<CR>

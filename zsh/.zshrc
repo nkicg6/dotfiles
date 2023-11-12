@@ -49,4 +49,6 @@ if [[ $(uname) == "Darwin" ]]; then
   alias xclip=pbcopy
 fi
 
+alias tf=terraform
+
 bindkey -s '^f' "$HOME/bin/tmux-fzf.sh\n"

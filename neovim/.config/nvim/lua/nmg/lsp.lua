@@ -11,7 +11,10 @@ function setsign()
 end
 
 --autocmd BufEnter
-vim.cmd([[ autocmd! BufEnter :lua 'setsign()' ]])
+vim.cmd([[ augroup GOAUCMD 
+             autocmd! 
+             autocmd BufEnter * :lua setsign() 
+           augroup END ]])
 
 -- golang
 lspconfig.gopls.setup({
