@@ -75,12 +75,11 @@ endif
 call plug#end()
 " color scheme
 set background=dark
-if (has("termguicolors"))
- set termguicolors
+if (empty($TMUX) && getenv('TERM_PROGRAM') == 'Apple_Terminal')
+  colo default
+else
+  colo tender
 endif
-
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colo tender
 
 " fzf remaps
 nnoremap <C-p> :GFiles<CR>

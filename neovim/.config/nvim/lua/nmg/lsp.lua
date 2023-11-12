@@ -5,16 +5,19 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 function setsign()
   if vim.tbl_isempty(vim.lsp.buf_get_clients()) then
     vim.opt.signcolumn = "auto"
+    --print("Setting signcolumn to auto")
   else
     vim.opt.signcolumn = "yes"
+    --print("Setting signcolumn to yes")
   end
 end
 
---autocmd BufEnter
-vim.cmd([[ augroup GOAUCMD 
-             autocmd! 
-             autocmd BufEnter * :lua setsign() 
-           augroup END ]])
+-- fix annoying signcolumn toggles
+local lspGroup = vim.api.nvim_create_augroup("lspGroup", {clear=true})
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = lspGroup,
+  callback=setsign
+})
 
 -- golang
 lspconfig.gopls.setup({
