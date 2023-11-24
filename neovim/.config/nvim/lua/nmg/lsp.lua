@@ -12,25 +12,34 @@ function setsign()
   end
 end
 
+function lsp_kbd()
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0}) 
+  vim.keymap.set("n", "<leader>h", vim.diagnostic.open_float, {buffer=0})
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=0}) 
+  vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, {buffer=0}) 
+  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {buffer=0}) 
+  vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {buffer=0}) 
+  vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, {buf=0})
+end
+
 -- fix annoying signcolumn toggles
 local lspGroup = vim.api.nvim_create_augroup("lspGroup", {clear=true})
 vim.api.nvim_create_autocmd("BufEnter", {
   group = lspGroup,
   callback=setsign
 })
+-- c
+
+lspconfig.clangd.setup{
+  capabilities = capabilities,
+  on_attach = lsp_kbd,
+}
+
 
 -- golang
 lspconfig.gopls.setup({
   capabilities = capabilities,
-  on_attach = function()
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0}) 
-    vim.keymap.set("n", "<leader>h", vim.diagnostic.open_float, {buffer=0})
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=0}) 
-    vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, {buffer=0}) 
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {buffer=0}) 
-    vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {buffer=0}) 
-    vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, {buf=0})
-  end, 
+  on_attach = lsp_kbd,
   settings = {
     gopls = {
       analyses = {
