@@ -1,5 +1,5 @@
 ZSH_DISABLE_COMPFIX=true # fix for completion permissions
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
 # setup prompt with branch info and git completions
 autoload -Uz vcs_info

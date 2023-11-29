@@ -28,6 +28,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
   group = lspGroup,
   callback=setsign
 })
+
 -- c
 
 lspconfig.clangd.setup{
@@ -35,6 +36,12 @@ lspconfig.clangd.setup{
   on_attach = lsp_kbd,
 }
 
+-- python
+
+lspconfig.pyright.setup{
+  capabilities = capabilities,
+  on_attach = lsp_kbd,
+}
 
 -- golang
 lspconfig.gopls.setup({
