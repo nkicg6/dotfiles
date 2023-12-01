@@ -38,11 +38,6 @@ nnoremap <leader>x :silent !chmod +x %<CR>
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprev<CR>
 
-"quick switch
-map <leader>n :bnext<cr>
-map <leader>p :bprevious<cr>
-map <leader>d :bdelete<cr>
-
 " plugins
 let data_dir = expand($HOME) . "/.vim"
 if empty(glob(data_dir . '/autoload/plug.vim'))
