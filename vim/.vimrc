@@ -24,6 +24,8 @@ let mapleader = ' '
 
 " NetRW directory explore
 nnoremap <leader>pv :Ex<CR>
+let g:netrw_keepdir = 0
+let g:netrw_localcopydircmd = 'cp -r'
 
 " source vimrc
 nnoremap <leader><CR> :so $HOME/.vimrc<CR> 
@@ -65,7 +67,6 @@ if has('nvim')
   Plug 'hrsh7th/cmp-path'
   Plug 'L3MON4D3/LuaSnip'
   Plug 'saadparwaiz1/cmp_luasnip'
-  Plug 'hashivim/vim-terraform'
 endif
 call plug#end()
 
