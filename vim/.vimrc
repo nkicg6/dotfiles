@@ -31,8 +31,9 @@ let g:netrw_localcopydircmd = 'cp -r'
 nnoremap <leader><CR> :so $HOME/.vimrc<CR> 
 
 " better Grep
-command! -nargs=+ Grep execute 'silent vimgrep! <args>' | copen
-
+command! -nargs=+ Grep execute 'silent grep! <args>' | copen
+command! -nargs=+ RGrep execute 'cgete(system("rg --vimgrep " . <args>))' | copen
+"
 " exe
 nnoremap <leader>x :silent !chmod +x %<CR>
 
