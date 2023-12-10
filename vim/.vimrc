@@ -33,13 +33,15 @@ nnoremap <leader><CR> :so $HOME/.vimrc<CR>
 " better Grep
 command! -nargs=+ Grep execute 'silent grep! <args>' | copen
 command! -nargs=+ RGrep execute 'cgete(system("rg --vimgrep " . <args>))' | copen
-"
+
 " exe
 nnoremap <leader>x :silent !chmod +x %<CR>
 
 " quickfix customizations
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprev<CR>
+nnoremap <leader>c :copen<CR>
+nnoremap <leader>k :ccl<CR>
 
 " plugins
 let data_dir = expand($HOME) . "/.vim"
