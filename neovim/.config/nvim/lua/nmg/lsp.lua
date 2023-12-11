@@ -76,6 +76,16 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     vim.lsp.buf.format({async = false})
   end
 })
+-- rust
+
+lspconfig.rust_analyzer.setup{
+  capabilities = capabilities,
+  settings = {
+    ['rust-analyzer'] = {},
+  },
+  on_attach = lsp_kbd,
+}
+
 
 vim.opt.completeopt={"menu", "menuone", "noselect"}
 -- completion nvim-cmp
@@ -87,6 +97,18 @@ cmp.setup({
       require('luasnip').lsp_expand(args.body)
     end,
   },
+  formatting = {
+    format = function(entry, vim_item)
+      vim_item.menu = ({
+        buffer = "[buf]",
+        nvim_lsp = "[LSP]",
+        nvim_lua = "[api]",
+        path = "[path]",
+        luasnip = "[snip]",
+      })[entry.source.name]
+      return vim_item
+    end
+    },
   window = {
     -- completion = cmp.config.window.bordered(),
     -- documentation = cmp.config.window.bordered(),
@@ -100,9 +122,11 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'luasnip' }, -- For luasnip users.
-  }, {
-    { name = 'buffer' },
-  })
+    { name = 'nvim_lua' },
+    { name = 'path' },
+    { name = 'luasnip' },
+    { name = 'buffer', keyword_length = 5 },
+  }
+  )
 })
 

@@ -66,6 +66,7 @@ if has('nvim')
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-nvim-lua'
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/cmp-path'
   Plug 'L3MON4D3/LuaSnip'
@@ -87,4 +88,5 @@ endif
 
 " fzf remaps
 nnoremap <C-p> :GFiles<CR>
+nnoremap <leader>bf :Buffers<CR>
 nnoremap <leader>pf :Files<CR>
