@@ -8,6 +8,8 @@ set smartindent expandtab autoindent
 set shiftwidth=2 tabstop=2 tabstop=2 softtabstop=2
 set backspace=eol,start
 set showcmd title
+set listchars=tab:>-,trail:·
+set list
 syntax on
 
 " search
@@ -30,9 +32,9 @@ let g:netrw_localcopydircmd = 'cp -r'
 " source vimrc
 nnoremap <leader><CR> :so $HOME/.vimrc<CR> 
 
-" better Grep
+" grep and ripgrep
 command! -nargs=+ Grep execute 'silent grep! <args>' | copen
-command! -nargs=+ RGrep execute 'cgete(system("rg --vimgrep " . <args>))' | copen
+command! -nargs=+ RGrep execute 'cgete(system(printf("rg --vimgrep \"%s\"", <args>)))' | copen
 
 " exe
 nnoremap <leader>x :silent !chmod +x %<CR>
