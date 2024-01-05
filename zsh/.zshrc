@@ -32,21 +32,18 @@ export PATH="$HOME/dotfiles/bin":$PATH
 export ARCHFLAGS="-arch x86_64"
 export CGO_ENABLED=1
 
-# Python setup MacOS
-PY36="/Library/Frameworks/Python.framework/Versions/3.6/bin"
-PY38="/Library/Frameworks/Python.framework/Versions/3.8/bin"
-PY39="/Library/Frameworks/Python.framework/Versions/3.9/bin"
-PY311="/Library/Frameworks/Python.framework/Versions/3.11/bin"
-
-export PATH=$PY311:$PY39:$PY38:$PY36:$PATH
 export PIP_REQUIRE_VIRTUALENV=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 
-
 if [[ $(uname) == "Darwin" ]]; then
-  alias xclip=pbcopy
+  # Python setup MacOS
+  PY36="/Library/Frameworks/Python.framework/Versions/3.6/bin"
+  PY38="/Library/Frameworks/Python.framework/Versions/3.8/bin"
+  PY39="/Library/Frameworks/Python.framework/Versions/3.9/bin"
+  PY311="/Library/Frameworks/Python.framework/Versions/3.11/bin"
+  export PATH=$PY311:$PY39:$PY38:$PY36:$PATH
 fi
 
 alias tf=terraform
