@@ -3,6 +3,7 @@
   vars:
     dependencies:
       - vim
+      - neovim
       - stow
       - git
       - tmux
@@ -14,7 +15,7 @@
       ansible.builtin.shell: stow zsh
       args:
         chdir: $HOME/dotfiles
-          
+
     - name: stow vim 
       ansible.builtin.shell: stow vim
       args:
@@ -34,5 +35,3 @@
       ansible.builtin.shell: stow bin 
       args:
         chdir: $HOME/dotfiles
-
-

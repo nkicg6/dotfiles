@@ -8,7 +8,7 @@
     upgrade_all: false
   when: ansible_distribution == "MacOSX"
 
-- name: Install vim (Rocky)
+- name: Install essentials (Rocky)
   become: yes
   ansible.builtin.dnf:
     name: "{{ dependencies }}"
@@ -16,7 +16,7 @@
     update_cache: true
   when: ansible_distribution == "Rocky"
 
-- name: Install vim (Ubuntu)
+- name: Install essentials (Ubuntu)
   become: yes
   ansible.builtin.apt:
     name: "{{ dependencies }}"
