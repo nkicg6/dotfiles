@@ -6,7 +6,7 @@ set encoding=utf-8
 set noerrorbells
 set smartindent expandtab autoindent
 set shiftwidth=2 tabstop=2 tabstop=2 softtabstop=2
-set backspace=eol,start
+set backspace=eol,start,indent
 set showcmd title
 set listchars=tab:>-,trail:·
 set list
