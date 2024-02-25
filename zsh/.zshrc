@@ -25,7 +25,7 @@ select-word-style bash
   export EDITOR='vim'
 
 # personal bin
-export PATH="$HOME/bin":$PATH
+export PATH="/usr/local/sbin:$HOME/bin":$PATH
 export PATH="$HOME/dotfiles/bin":$PATH
 
 # Compilation flags

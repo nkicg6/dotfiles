@@ -2,15 +2,7 @@ local lspconfig = require("lspconfig")
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-function setsign()
-  if vim.tbl_isempty(vim.lsp.buf_get_clients()) then
-    vim.opt.signcolumn = "auto"
-    --print("Setting signcolumn to auto")
-  else
-    vim.opt.signcolumn = "yes"
-    --print("Setting signcolumn to yes")
-  end
-end
+vim.opt.signcolumn = "number"
 
 function lsp_kbd()
   vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0}) 
@@ -26,7 +18,7 @@ end
 local lspGroup = vim.api.nvim_create_augroup("lspGroup", {clear=true})
 vim.api.nvim_create_autocmd("BufEnter", {
   group = lspGroup,
-  callback=setsign
+  -- callback=setsign
 })
 
 -- c
@@ -76,6 +68,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     vim.lsp.buf.format({async = false})
   end
 })
+
 -- rust
 
 lspconfig.rust_analyzer.setup{
@@ -86,6 +79,12 @@ lspconfig.rust_analyzer.setup{
   on_attach = lsp_kbd,
 }
 
+-- zig
+
+lspconfig.zls.setup{
+  capabilities = capabilities,
+  on_attach = lsp_kbd,
+}
 
 vim.opt.completeopt={"menu", "menuone", "noselect"}
 -- completion nvim-cmp

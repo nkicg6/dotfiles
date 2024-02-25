@@ -8,8 +8,7 @@ set smartindent expandtab autoindent
 set shiftwidth=2 tabstop=2 tabstop=2 softtabstop=2
 set backspace=eol,start,indent
 set showcmd title
-set listchars=tab:>-,trail:·
-set list
+set listchars=trail:·
 syntax on
 
 " search
@@ -66,6 +65,7 @@ Plug 'morhetz/gruvbox'
 Plug 'ayu-theme/ayu-vim'
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'
+  Plug 'ziglang/zig.vim'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-nvim-lua'
