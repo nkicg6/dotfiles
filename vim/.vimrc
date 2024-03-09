@@ -79,7 +79,7 @@ call plug#end()
 
 " color scheme
 set background=dark
-if (empty($TMUX) && getenv('TERM_PROGRAM') == 'Apple_Terminal')
+if $TERM_PROGRAM == 'Apple_Terminal'
   colo default
 else
   colo tender "gruvbox

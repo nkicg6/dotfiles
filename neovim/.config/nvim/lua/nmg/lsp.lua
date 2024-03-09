@@ -16,10 +16,6 @@ end
 
 -- fix annoying signcolumn toggles
 local lspGroup = vim.api.nvim_create_augroup("lspGroup", {clear=true})
-vim.api.nvim_create_autocmd("BufEnter", {
-  group = lspGroup,
-  -- callback=setsign
-})
 
 -- c
 
@@ -36,6 +32,7 @@ lspconfig.pyright.setup{
 }
 
 -- golang
+
 lspconfig.gopls.setup({
   capabilities = capabilities,
   on_attach = lsp_kbd,
