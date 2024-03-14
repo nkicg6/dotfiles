@@ -63,6 +63,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'jacoborus/tender.vim'
 Plug 'morhetz/gruvbox'
 Plug 'ayu-theme/ayu-vim'
+Plug 'LukeGoodsell/nextflow-vim'
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'
   Plug 'ziglang/zig.vim'
