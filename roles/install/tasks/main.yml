@@ -32,6 +32,16 @@
     update_cache: true
   when: ansible_distribution == "Rocky"
 
+- name: Install c compilers (Rocky)
+  become: yes
+  ansible.builtin.dnf:
+    name:
+      - gcc
+      - clang
+    state: present
+    update_cache: true
+  when: ansible_distribution == "Rocky"
+
 - name: Install xclip (Ubuntu)
   become: yes
   ansible.builtin.apt:
