@@ -22,9 +22,9 @@ autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 
 " bindings
 let mapleader = ' '
+inoremap jk <esc>
 
 " NetRW directory explore
-nnoremap <leader>pv :Ex<CR>
 let g:netrw_keepdir = 0
 let g:netrw_localcopydircmd = 'cp -r'
 
@@ -74,6 +74,7 @@ if has('nvim')
   Plug 'L3MON4D3/LuaSnip'
   Plug 'saadparwaiz1/cmp_luasnip'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'mfussenegger/nvim-dap'
 endif
 call plug#end()
 
