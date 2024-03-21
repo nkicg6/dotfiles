@@ -49,3 +49,11 @@ fi
 alias tf=terraform
 
 bindkey -s '^f' "$HOME/bin/tmux-fzf.sh\n"
+
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+export HISTSIZE=100000
+export HISTCONTROL=ignoredups:erasedups
+#export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"

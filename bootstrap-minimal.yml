@@ -21,6 +21,11 @@
       args:
         chdir: $HOME/dotfiles
 
+    - name: stow bash_profile 
+      ansible.builtin.shell: stow bash
+      args:
+        chdir: $HOME/dotfiles
+
     - name: stow neovim
       ansible.builtin.shell: stow neovim
       args:
