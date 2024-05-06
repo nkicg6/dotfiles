@@ -20,6 +20,10 @@ set ignorecase smartcase
 " python
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 
+"md spellcheck
+autocmd BufNewFile,BufRead *.md  set ft=markdown
+autocmd FileType markdown setlocal spell spelllang=en_us
+
 " bindings
 let mapleader = ' '
 inoremap jk <esc>
@@ -47,7 +51,7 @@ nnoremap <leader>k :ccl<CR>
 " plugins
 let data_dir = expand($HOME) . "/.vim"
 if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  silent execute '!curl -fkLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $HOME/.vimrc
 endif
 
