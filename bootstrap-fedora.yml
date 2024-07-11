@@ -76,3 +76,16 @@
 
         - name: Ensure Go binary is in PATH for the current session
           ansible.builtin.shell: . /etc/profile.d/go.sh
+    - name: check for gopls
+      ansible.builtin.command: "which gopls"
+      register: gopls_check
+      changed_when: false
+      failed_when: false
+      ignore_errors: true
+
+    - name: install gopls
+      ansible.builtin.shell: go install golang.org/x/tools/gopls@latest
+      when: gopls_check.rc != 0 
+
+
+
