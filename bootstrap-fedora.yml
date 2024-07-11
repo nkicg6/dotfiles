@@ -1,0 +1,78 @@
+---
+- hosts: localhost
+  vars:
+    go_version: 1.22.5
+    dependencies:
+      - gcc
+      - clang
+      - vim
+      - neovim
+      - stow
+      - git
+      - tmux
+      - fzf
+      - rsync
+      - rclone
+      - make
+      - ripgrep
+      - xclip
+    stowdirs:
+
+  tasks:
+    - name: Install essentials (Fedora)
+      become: yes
+      ansible.builtin.dnf:
+        name: "{{ dependencies }}"
+        state: latest
+        update_cache: true
+
+    - name: stow directories
+      ansible.builtin.shell: stow "{{ item }}" 
+      args:
+        chdir: "{{ ansible_env.HOME }}/dotfiles"
+      loop:
+        - i3
+        - vim
+        - neovim
+        - bin
+        - bash
+        - x
+        - bin
+        - tmux
+
+    - name: check current go go_version
+      command: go go version 
+      register: go_version_check
+      changed_when: false
+      failed_when: false
+      check_mode: no
+
+    - name: set the current go version
+      set_fact:
+        current_go_version: "{{ go_version_check.stdout.split(' ')[2].replace('go','') if go_version_check.rc == 0 else 'none' }}"
+      
+    - name: install go "{{ go_version }}"
+      when: current_go_version != go_version
+      become: yes
+      block:
+        - name: Download Go "{{ go_version }}"
+          get_url:
+            url: "https://go.dev/dl/go{{ go_version }}.linux-amd64.tar.gz"
+            dest: "/tmp/go{{ go_version }}.linux-amd64.tar.gz"
+            mode: '0644'
+
+        - name: Extract Go archive
+          unarchive:
+            src: "/tmp/go{{ go_version }}.linux-amd64.tar.gz"
+            dest: /usr/local
+            remote_src: yes
+
+        - name: Set Go environment variables
+          lineinfile:
+            path: /etc/profile.d/go.sh
+            create: yes
+            line: 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin'
+            mode: '0644'
+
+        - name: Ensure Go binary is in PATH for the current session
+          ansible.builtin.shell: . /etc/profile.d/go.sh
