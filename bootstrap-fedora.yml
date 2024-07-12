@@ -16,7 +16,8 @@
       - make
       - ripgrep
       - xclip
-    stowdirs:
+      - sway
+      - kitty
 
   tasks:
     - name: Install essentials (Fedora)
@@ -32,6 +33,7 @@
         chdir: "{{ ansible_env.HOME }}/dotfiles"
       loop:
         - i3
+        - sway
         - vim
         - neovim
         - bin
