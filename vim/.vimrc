@@ -99,3 +99,6 @@ endif
 nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>bf :Buffers<CR>
 nnoremap <leader>pf :Files<CR>
+
+" overwirte fzf :W
+nnoremap <silent> :W<CR> :w<CR>

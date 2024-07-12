@@ -18,6 +18,8 @@
       - xclip
       - sway
       - kitty
+      - pipx
+      - light
 
   tasks:
     - name: Install essentials (Fedora)
@@ -89,5 +91,26 @@
       ansible.builtin.shell: go install golang.org/x/tools/gopls@latest
       when: gopls_check.rc != 0 
 
+    - name: configure systemd sleep service for hibernating
+      become: yes
+      community.general.ini_file:
+        path: /etc/systemd/sleep.conf
+        section: Sleep
+        option: HibernateDelaySec
+        value: 36000
+        mode: '0600'
+        state: present
 
+    - name: systemd config for login/locking
+      become: yes
+      community.general.ini_file:
+        path: /etc/systemd/login.conf
+        section: Login
+        option: "{{ item.option }}"
+        value: "{{ item.value }}"
+        mode: '0600'
+        state: present
+      loop:
+        - { option: "HandleSuspendKey", value: "suspend-then-hibernate" }
+        - { option: "HandleLidSwitch", value: "suspend-then-hibernate" }
 
