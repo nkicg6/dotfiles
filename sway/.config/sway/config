@@ -42,9 +42,9 @@ output * bg $desktop_img fill
 # Example configuration:
 #
  exec swayidle -w \
-          timeout 300 'swaylock -f -c 000000' \
+          timeout 300 'swaylock -f -c $lock_img' \
           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep 'swaylock -f -c 000000'
+          before-sleep 'swaylock -f -c $lock_img'
 
 exec swayidle -w before-sleep 'swaylock -f -i $lock_img'
 #swaylock -f -i $desktop_img
@@ -54,15 +54,30 @@ exec swayidle -w before-sleep 'swaylock -f -i $lock_img'
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
-#
-# Example configuration:
-#
+# for inputs, use swaymsg -t get_inputs
 input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
     dwt enabled
     tap enabled
     natural_scroll enabled
     middle_emulation enabled
 }
+
+input "6940:7059:Corsair_CORSAIR_KATAR_PRO_Gaming_Mouse" {
+  natural_scroll enabled
+  }
+
+### Output configurations 
+# eDP-1 is the builtin   
+# DP-3 is home external, use swaymsg -t get_outputs to see outputs
+set $laptop eDP-1
+output DP-3 res 2560x1440 scale 1.5
+exec_always ~/bin/swayclamshell.sh
+# DP-3
+#output "Samsung Electric Company LU28R55 HCJR407168"
+#   Current mode: 3840x2160 @ 60.000 Hz
+#    1920x1200 @ 60.000 Hz
+ 
+
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
@@ -152,7 +167,7 @@ assign [app_id="org.mozilla.firefox"] workspace 2
 assign [app_id="email"] workspace 3
 assign [app_id="org.keepassxc.KeePassXC"] workspace 4
 
-# Programs at startup
+### Programs at startup
 exec firefox -P default-release
 exec keepassxc
 exec firefox --name=email -P default https://mail.proton.me/u/0/inbox https://calendar.proton.me
@@ -163,7 +178,8 @@ set $titlecolor "#ffe6ff"
 
 set $my_titlebar {
     font pango:monospace 0.001
-}
+    }
+
 #for_window [app_id="org.mozilla.firefox"] $my_titlebar
 #for_window #background "#ffffff"
 gaps inner 10
@@ -188,6 +204,9 @@ bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
 #
 # Layout stuff:
 #
+# multi monitor
+bindsym $mod+greater move workspace to output right
+bindsym $mod+less move workspace to output left
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
