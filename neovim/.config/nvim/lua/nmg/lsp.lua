@@ -11,7 +11,7 @@ function lsp_kbd()
   vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, {buffer=0}) 
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {buffer=0}) 
   vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {buffer=0}) 
-  vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, {buf=0})
+  vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, {buffer=0})
 end
 
 -- fix annoying signcolumn toggles

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-session=$(find $HOME $HOME/dev $HOME/dotfiles $HOME/personal $HOME/bioteam $HOME/personal_projects -type d -mindepth 1 -maxdepth 2 |fzf)
+session=$(find $HOME/dev $HOME/dotfiles $HOME/personal $HOME/bioteam $HOME/personal_projects $HOME/projects -type d -mindepth 1 -maxdepth 2 |fzf)
 session_name=$(basename "$session"|tr . _)
 tmux has-session -t "$session_name" 2>/dev/null
 if [ $? != 0 ]; then

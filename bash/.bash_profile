@@ -6,7 +6,8 @@ fi
 
 export LANG=en_US.UTF-8
 export EDITOR=nvim
-PS1='${PROMPT_START@P}\[\e[${PROMPT_COLOR}m\]\u@\h:\w $ ${PROMPT_END@P}\[\e[0m\]'
+# https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Bash
+export PS1='${PROMPT_START@P}\[\e[${PROMPT_COLOR}m\]\u@\h:\w $ ${PROMPT_END@P}\[\e[0m\]'
 export PATH="$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH"
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
@@ -20,5 +21,7 @@ shopt -s histappend
 export HISTSIZE=100000
 export HISTCONTROL=ignoredups:erasedups
 export XDG_CONFIG_HOME="$HOME/.config"
+# this crashes sqlitestudio...
+#export QT_QPA_PLATFORM=wayland
 #export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 bind '"\C-f":"$HOME/bin/tmux-fzf.sh\n"'

@@ -18,7 +18,9 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | wmenu | xargs swaymsg exec --
+# add wofi
+set $menu wofi --show run
+#set $menu dmenu_path | wmenu | xargs swaymsg exec --
 
 input "type:keyboard" {
     xkb_options caps:ctrl_modifier
@@ -92,7 +94,7 @@ bindsym $mod+Ctrl+l exec swaylock -f -i $lock_img
 bindsym $mod+Return exec $term
 
 # Kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # Start your launcher
 bindsym $mod+d exec $menu
@@ -166,11 +168,13 @@ bindsym $mod+d exec $menu
 assign [app_id="org.mozilla.firefox"] workspace 2
 assign [app_id="email"] workspace 3
 assign [app_id="org.keepassxc.KeePassXC"] workspace 4
+assign [class="Logseq"] workspace 4
 
 ### Programs at startup
 exec firefox -P default-release
 exec keepassxc
 exec firefox --name=email -P default https://mail.proton.me/u/0/inbox https://calendar.proton.me
+exec logseq
 
 # hide titlebar
 set $titlecolor "#ffe6ff"
@@ -200,6 +204,10 @@ for_window {
 #font pango:monospace 0.001
 bindsym XF86MonBrightnessUp exec light -A 10 #increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 #
 # Layout stuff:
@@ -272,16 +280,19 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position bottom
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    status_command exec statusline.sh
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
+  swaybar_command waybar  
+  }
+#bar {
+#    position bottom
+#
+#    # When the status_command prints a new line to stdout, swaybar updates.
+#    status_command exec statusline.sh
+#    colors {
+#        statusline #ffffff
+#        background #323232
+#        inactive_workspace #32323200 #32323200 #5c5c5c
+#    }
+#}
 
 # custom #
 workspace_auto_back_and_forth yes

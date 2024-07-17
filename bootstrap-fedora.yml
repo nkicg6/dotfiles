@@ -20,6 +20,8 @@
       - kitty
       - pipx
       - light
+      - wofi
+      - waybar
 
   tasks:
     - name: Install essentials (Fedora)
@@ -43,6 +45,7 @@
         - x
         - bin
         - tmux
+        - waybar
 
     - name: check current go go_version
       command: go go version 
