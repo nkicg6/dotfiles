@@ -22,6 +22,8 @@
       - light
       - wofi
       - waybar
+      - grimshot
+      - mako
 
   tasks:
     - name: Install essentials (Fedora)
@@ -54,6 +56,30 @@
       failed_when: false
       check_mode: no
 
+    - name: make home directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+      loop:
+        - "${HOME}/screenshots"
+        - "${HOME}/dev"
+        - "${HOME}/personal"
+        - "${HOME}/projects"
+
+    - name: set standard startup vars
+      become: yes
+      lineinfile:
+        path: /etc/profile.d/startup-vars.sh
+        create: yes
+        line: "{{ item }}"
+        mode: '0644'
+      loop:
+        - 'export LANG=en_US.UTF-8'
+        - 'export EDITOR=nvim'
+        - 'export XDG_SCREENSHOTS_DIR=$HOME/screenshot'
+        - 'export XDG_CONFIG_HOME=$HOME/.config'
+
     - name: set the current go version
       set_fact:
         current_go_version: "{{ go_version_check.stdout.split(' ')[2].replace('go','') if go_version_check.rc == 0 else 'none' }}"
@@ -78,11 +104,16 @@
           lineinfile:
             path: /etc/profile.d/go.sh
             create: yes
-            line: 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin'
+            line: "{{ item }}"
             mode: '0644'
+          loop:
+            - 'export GOPATH=$HOME/go'
+            - 'export PATH=$GOPATH/bin:$PATH'
+            - 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin'
 
         - name: Ensure Go binary is in PATH for the current session
           ansible.builtin.shell: . /etc/profile.d/go.sh
+
     - name: check for gopls
       ansible.builtin.command: "which gopls"
       register: gopls_check

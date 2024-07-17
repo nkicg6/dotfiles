@@ -21,6 +21,8 @@ shopt -s histappend
 export HISTSIZE=100000
 export HISTCONTROL=ignoredups:erasedups
 export XDG_CONFIG_HOME="$HOME/.config"
+# grimshot
+export XDG_SCREENSHOTS_DIR="$HOME/screenshots"
 # this crashes sqlitestudio...
 #export QT_QPA_PLATFORM=wayland
 #export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
