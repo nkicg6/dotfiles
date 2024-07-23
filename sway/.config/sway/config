@@ -37,6 +37,13 @@ output * bg $desktop_img fill
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
+
+### WIFI ###
+# run
+# `nmcli device wifi list`
+# which will give you a list of wifi networks/ssid's available
+
+### Keybindings ###
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 exec mako
 
@@ -47,11 +54,10 @@ bindsym Mod4+Ctrl+p  exec grimshot --notify save window
 
 ### Idle configuration
 #
-# Example configuration:
-#
+
  exec swayidle -w \
           timeout 300 'swaylock -f -i $lock_img' \
-          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          timeout 800 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
           before-sleep 'swaylock -f -i $lock_img'
 
 exec swayidle -w before-sleep 'swaylock -f -i $lock_img'
@@ -111,6 +117,9 @@ bindsym $mod+d exec $menu
     # Change normal to inverse to use left mouse button for resizing and right
     # mouse button for dragging.
     floating_modifier $mod normal
+    # Toggle floating and stacked layout
+bindsym $mod+Shift+f exec "swaymsg [con_id=\"__focused__\"] floating toggle; if [ $(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .layout') = \"floating\"] ; then swaymsg layout stacked ; fi"
+
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
@@ -188,7 +197,7 @@ set $titlecolor "#ffe6ff"
 
 set $my_titlebar {
     font pango:monospace 0.001
-    }
+}
 
 #for_window [app_id="org.mozilla.firefox"] $my_titlebar
 #for_window #background "#ffffff"
@@ -197,9 +206,9 @@ smart_gaps off
 titlebar_border_thickness 0
 default_border pixel 2
 
-for_window { 
-  #[app_id="org.mozilla.firefox"] titlebar $my_titlebar
+for_window {
   [app_id=".*"] $my_titlebar
+  [title="Pinboard.*"] floating enable
   [window_role="pop-up"] floating enable
   [window_role="bubble"] floating enable
   [window_role="dialog"] floating enable

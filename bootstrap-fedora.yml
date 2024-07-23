@@ -38,7 +38,6 @@
       args:
         chdir: "{{ ansible_env.HOME }}/dotfiles"
       loop:
-        - i3
         - sway
         - vim
         - neovim
@@ -79,6 +78,7 @@
         - 'export EDITOR=nvim'
         - 'export XDG_SCREENSHOTS_DIR=$HOME/screenshot'
         - 'export XDG_CONFIG_HOME=$HOME/.config'
+        - 'export PATH=$PATH:/usr/bin'
 
     - name: set the current go version
       set_fact:
