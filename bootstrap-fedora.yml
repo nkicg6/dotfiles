@@ -79,6 +79,7 @@
         - 'export XDG_SCREENSHOTS_DIR=$HOME/screenshot'
         - 'export XDG_CONFIG_HOME=$HOME/.config'
         - 'export PATH=$PATH:/usr/bin'
+        - 'export MOZ_ENABLE_WAYLAND=1'
 
     - name: set the current go version
       set_fact:

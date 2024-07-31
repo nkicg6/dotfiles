@@ -30,7 +30,8 @@
     "clock": {
       // "timezone": "America/New_York",
       "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-      "format-alt": "{:%Y-%m-%d}"
+      "format-alt": "{:%H:%M}",
+      "format": "{:%Y %b %d %I:%M %p}"
     },
     "network": {
       // "interface": "wlp2*", // (Optional) To force the use of this interface
