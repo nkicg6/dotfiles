@@ -25,8 +25,11 @@ autocmd BufNewFile,BufRead *.md  set ft=markdown
 autocmd FileType markdown setlocal spell spelllang=en_us
 
 " bindings
+" check for mappings in normal and visual mode with :nmap <C-y> and :vmap <C-y>
 let mapleader = ' '
 inoremap jk <esc>
+nnoremap <C-y> "+y
+vnoremap <C-y> "+y
 
 " NetRW directory explore
 let g:netrw_keepdir = 0
