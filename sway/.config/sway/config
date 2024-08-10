@@ -39,10 +39,12 @@ output * bg $desktop_img fill
 #
 
 ### WIFI ###
+# use nm-connection-editor
 # run
 # `nmcli device wifi list`
 # https://www.baeldung.com/linux/network-manager
 # which will give you a list of wifi networks/ssid's available
+# note, I disabled ipv6 because protonVPN wireguard doesn't support it
 
 ### Keybindings ###
 # You can get the names of your outputs by running: swaymsg -t get_outputs
@@ -65,7 +67,7 @@ exec swayidle -w before-sleep 'swaylock -f -i $lock_img'
 #swaylock -f -i $desktop_img
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
+# your displays after another 500 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
@@ -244,7 +246,7 @@ bindsym $mod+v splitv
 
 # Switch the current container between different layout styles
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout splith
 # Make the current focus fullscreen
 bindsym $mod+f fullscreen

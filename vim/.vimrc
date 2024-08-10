@@ -96,6 +96,10 @@ else
   colo tender "gruvbox
 endif
 
+if has('nvim')
+  set noacd
+endif
+
 if has('termguicolors')
   set termguicolors
 endif
