@@ -20,9 +20,19 @@ set ignorecase smartcase
 " python
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 
-"md spellcheck
-autocmd BufNewFile,BufRead *.md  set ft=markdown
+" md settings
+autocmd BufNewFile,BufRead *.md set ft=markdown
 autocmd FileType markdown setlocal spell spelllang=en_us
+
+autocmd FileType markdown,rmd setlocal wrap linebreak columns=120
+autocmd BufEnter *.md,*.Rmd setlocal wrap linebreak columns=120
+
+" Key mappings for navigation
+autocmd FileType markdown,rmd nnoremap <buffer> j gj
+autocmd FileType markdown,rmd nnoremap <buffer> k gk
+
+" Restore settings when leaving markdown buffers
+autocmd BufLeave *.md,*.Rmd setlocal nowrap nolinebreak
 
 " bindings
 " check for mappings in normal and visual mode with :nmap <C-y> and :vmap <C-y>
@@ -85,6 +95,8 @@ if has('nvim')
   Plug 'mfussenegger/nvim-dap'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'ThePrimeagen/harpoon'
+  Plug 'windwp/nvim-ts-autotag'
+  Plug 'vim-scripts/dbext.vim'
 endif
 call plug#end()
 

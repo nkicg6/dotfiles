@@ -24,6 +24,7 @@
       - waybar
       - grimshot
       - mako
+      - syncthing
 
   tasks:
     - name: Install essentials (Fedora)
@@ -47,6 +48,7 @@
         - bin
         - tmux
         - waybar
+        - syncthing
 
     - name: check current go go_version
       command: go go version 
@@ -78,8 +80,13 @@
         - 'export EDITOR=nvim'
         - 'export XDG_SCREENSHOTS_DIR=$HOME/screenshot'
         - 'export XDG_CONFIG_HOME=$HOME/.config'
+        - 'export XDG_STATE_HOME=$HOME/.local/state'
         - 'export PATH=$PATH:/usr/bin'
         - 'export MOZ_ENABLE_WAYLAND=1'
+        - 'export ELECTRON_OZONE_PLATFORM_HINT=auto'
+        - 'export ELECTRON_ENABLE_FEATURES=UseOzonePlatform'
+        - 'export CHROME_OZONE_PLATFORM_HINT=auto'
+        - 'export CHROME_ENABLE_FEATURES=UseOzonePlatform'
 
     - name: set the current go version
       set_fact:
@@ -135,6 +142,14 @@
         value: 36000
         mode: '0600'
         state: present
+
+    - name: configure systemd syncthing
+      ansible.builtin.systemd_service:
+        daemon_reload: true
+        enabled: yes
+        scope: user
+        state: started
+        name: syncthing.service
 
     - name: systemd config for login/locking
       become: yes
