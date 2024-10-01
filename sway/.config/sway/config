@@ -26,7 +26,9 @@ input "type:keyboard" {
     xkb_options caps:ctrl_modifier
 }
 
-set $desktop_img /usr/share/backgrounds/default.png
+
+#set $desktop_img /usr/share/backgrounds/default.png
+set $desktop_img /usr/share/backgrounds/joshua.jpg
 set $lock_img $desktop_img
 ### Output configuratio
 #
@@ -39,11 +41,14 @@ output * bg $desktop_img fill
 #
 
 ### WIFI ###
-# use nm-connection-editor
 # run
 # `nmcli device wifi list`
+# `nmcli device wifi connect`
+# if you need a captive portal, use nm-connection-editor to disable wg auto connect
+# then run sudo wg-quick down <connection>
+# now you should be able to hit the captive portal.
+# now wg-qucik up <conneciton>
 # https://www.baeldung.com/linux/network-manager
-# which will give you a list of wifi networks/ssid's available
 # note, I disabled ipv6 because protonVPN wireguard doesn't support it
 
 ### Keybindings ###
@@ -58,7 +63,7 @@ bindsym Mod4+Ctrl+p  exec grimshot --notify save window
 ### Idle configuration
 #
 
- exec swayidle -w \
+ exec_always swayidle -w \
           timeout 300 'swaylock -f -i $lock_img' \
           timeout 800 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
           before-sleep 'swaylock -f -i $lock_img'
@@ -192,10 +197,12 @@ assign [app_id="email"] workspace 3
 assign [app_id="org.keepassxc.KeePassXC"] workspace 3
 assign [class="Logseq"] workspace 4
 
+set $OZONE_PLATFORM wayland
+exec_always --no-startup-id env OZONE_PLATFORM=$OZONE_PLATFORM
 ### Programs at startup
-exec firefox -P default-release
+exec firefox -P nick-home
 exec keepassxc
-exec firefox --name=email -P default https://mail.proton.me/u/0/inbox https://calendar.proton.me
+exec firefox --name=email -P email https://mail.proton.me/u/0/inbox https://calendar.proton.me https://gmail.com
 exec logseq
 
 # hide titlebar
@@ -215,8 +222,9 @@ default_border pixel 2
 
 for_window {
   [app_id=".*"] $my_titlebar
-  [title="Pinboard.*"] floating enable
+  [title="Pinboard - .*"] floating enable
   [window_role="pop-up"] floating enable
+  [window_role="popup"] floating enable
   [window_role="bubble"] floating enable
   [window_role="dialog"] floating enable
   [window_type="dialog"] floating enable
