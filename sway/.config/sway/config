@@ -44,6 +44,8 @@ output * bg $desktop_img fill
 # run
 # `nmcli device wifi list`
 # `nmcli device wifi connect`
+# TO connect with a passwrod
+# nmcli device wifi connect 'guest312' password 'beachtime'
 # if you need a captive portal, use nm-connection-editor to disable wg auto connect
 # then run sudo wg-quick down <connection>
 # now you should be able to hit the captive portal.

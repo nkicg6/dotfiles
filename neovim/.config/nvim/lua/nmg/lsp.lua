@@ -83,6 +83,43 @@ lspconfig.zls.setup{
   on_attach = lsp_kbd,
 }
 
+-- go templ
+-- go install github.com/a-h/templ/cmd/templ@latest
+vim.filetype.add({ extension = { templ = "templ" } })
+
+lspconfig.templ.setup{
+  on_attach = lsp_kbd,
+  capabilities = capabilities,
+}
+
+-- tailwind
+-- npm install -g @tailwindcss/language-server
+lspconfig.tailwindcss.setup({
+  on_attach = lsp_kbd,
+  capabilities = capabilities,
+  filetypes = { "templ", "javascript", "typescript", "react" },
+  init_options = { userLanguages = { templ = "html" } },
+})
+
+-- html
+-- npm i -g vscode-langservers-extracted
+lspconfig.html.setup({
+  on_attach = lsp_kbd,
+  capabilities = capabilities,
+  filetypes = { "html", "templ" },
+})
+
+
+-- htmx
+-- cargo install htmx-lsp
+
+lspconfig.htmx.setup({
+  on_attach = lsp_kbd,
+  capabilities = capabilities,
+  filetypes = { "html", "templ" },
+})
+
+
 vim.opt.completeopt={"menu", "menuone", "noselect"}
 -- completion nvim-cmp
 local cmp = require'cmp'

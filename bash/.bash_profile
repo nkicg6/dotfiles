@@ -27,3 +27,4 @@ export XDG_SCREENSHOTS_DIR="$HOME/screenshots"
 #export QT_QPA_PLATFORM=wayland
 #export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 bind '"\C-f":"$HOME/bin/tmux-fzf.sh\n"'
+. "$HOME/.cargo/env"
