@@ -97,7 +97,7 @@ lspconfig.templ.setup{
 lspconfig.tailwindcss.setup({
   on_attach = lsp_kbd,
   capabilities = capabilities,
-  filetypes = { "templ", "javascript", "typescript", "react" },
+  filetypes = { "templ", "html", "javascript", "typescript", "react" },
   init_options = { userLanguages = { templ = "html" } },
 })
 

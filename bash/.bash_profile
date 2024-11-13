@@ -6,6 +6,7 @@ fi
 
 export LANG=en_US.UTF-8
 export EDITOR=nvim
+export PAGER='less -S'
 # https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Bash
 export PS1='${PROMPT_START@P}\[\e[${PROMPT_COLOR}m\]\u@\h:\w $ ${PROMPT_END@P}\[\e[0m\]'
 export PATH="$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH"
