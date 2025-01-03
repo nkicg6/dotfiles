@@ -1,0 +1,141 @@
+---
+- hosts: localhost
+  vars:
+    neovim_version: 'v0.10.3'
+    dependencies:
+      - gcc
+      - vim
+      - stow
+      - git
+      - tmux
+      - fzf
+      - rsync
+      - rclone
+      - make
+      - ripgrep
+      - locales
+
+  tasks:
+    # Add locale setup tasks at the beginning
+    - name: Set temporary C.utf8 locale
+      ansible.builtin.shell: |
+        export LC_ALL=C.utf8
+        export LANG=C.utf8
+
+    - name: Install essentials (Debian)
+      become: yes
+      ansible.builtin.apt:
+        name: "{{ dependencies }}"
+        state: latest
+        update_cache: true
+
+    - name: Ensure locale gen file exists
+      become: yes
+      file:
+        path: /etc/locale.gen
+        state: touch
+        mode: '0644'
+
+    - name: Uncomment en_US.UTF-8 in locale.gen
+      become: yes
+      lineinfile:
+        path: /etc/locale.gen
+        regexp: '^#\s*en_US.UTF-8 UTF-8'
+        line: 'en_US.UTF-8 UTF-8'
+        state: present
+      notify: Generate locales
+
+    - name: Generate en_US.UTF-8 locale
+      become: yes
+      command: localedef -i en_US -f UTF-8 en_US.UTF-8
+
+    - name: Update locale settings
+      become: yes
+      command: update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+
+    - name: set standard startup vars
+      become: yes
+      lineinfile:
+        path: /etc/profile.d/startup-vars.sh
+        create: yes
+        line: "{{ item }}"
+        mode: '0644'
+      loop:
+        - 'export LANG=en_US.UTF-8'
+        - 'export LC_ALL=en_US.UTF-8'
+        - 'export EDITOR=nvim'
+        - 'export XDG_CONFIG_HOME=$HOME/.config'
+        - 'export XDG_STATE_HOME=$HOME/.local/state'
+        - 'export PATH=$PATH:/usr/bin'
+
+    - name: stow directories
+      ansible.builtin.shell: stow "{{ item }}"
+      args:
+        chdir: "{{ ansible_env.HOME }}/dotfiles"
+      loop:
+        - vim
+        - neovim
+        - bin
+        - bash
+        - tmux
+
+    - name: make essential directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+      loop:
+        - "${HOME}/dev"
+        - "${HOME}/personal"
+        - "${HOME}/projects"
+
+    # install neovim
+    - name: Check if Neovim 0.10 is installed
+      command: nvim --version
+      register: nvim_version_check
+      changed_when: false
+      failed_when: false
+      check_mode: no
+
+    - name: Install Neovim 0.10 from prebuilt release
+      when: nvim_version_check.rc != 0 or "v0.10" not in nvim_version_check.stdout
+      become: yes
+      block:
+        - name: Download Neovim binary
+          get_url:
+            url: "https://github.com/neovim/neovim/releases/download/{{ neovim_version }}/nvim-linux64.tar.gz"
+            dest: /tmp/nvim-linux64.tar.gz
+            mode: '0644'
+
+        - name: Create install directory
+          file:
+            path: /opt/nvim
+            state: directory
+            mode: '0755'
+
+        - name: Extract Neovim archive
+          unarchive:
+            src: /tmp/nvim-linux64.tar.gz
+            dest: /opt
+            remote_src: yes
+
+        - name: Create symlink to nvim binary
+          file:
+            src: /opt/nvim-linux64/bin/nvim
+            dest: /usr/local/bin/nvim
+            state: link
+
+        - name: Create symlink to nvim share directory
+          file:
+            src: /opt/nvim-linux64/share/nvim
+            dest: /usr/local/share/nvim
+            state: link
+
+        - name: Clean up downloaded archive
+          file:
+            path: /tmp/nvim-linux64.tar.gz
+            state: absent
+  handlers:
+    - name: Generate locales
+      become: yes
+      command: locale-gen
