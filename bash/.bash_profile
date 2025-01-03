@@ -4,6 +4,7 @@ if [ -f ~/.bashrc ]; then
 . ~/.bashrc
 fi
 
+export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export EDITOR=nvim
 export PAGER='less -S'
@@ -17,6 +18,7 @@ export CGO_ENABLED=1
 export PIP_REQUIRE_VIRTUALENV=1
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 shopt -s histappend
 export HISTSIZE=100000

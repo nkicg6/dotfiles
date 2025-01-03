@@ -25,6 +25,7 @@
       - grimshot
       - mako
       - syncthing
+      - glibc-langpack-en
 
   tasks:
     - name: Install essentials (Fedora)
