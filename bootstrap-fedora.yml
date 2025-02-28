@@ -50,6 +50,7 @@
         - tmux
         - waybar
         - syncthing
+        - kitty
 
     - name: check current go go_version
       command: go go version 
