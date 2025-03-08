@@ -52,6 +52,14 @@ output * bg $desktop_img fill
 # now wg-qucik up <conneciton>
 # https://www.baeldung.com/linux/network-manager
 # note, I disabled ipv6 because protonVPN wireguard doesn't support it
+### Bluetooth ###
+# bluetoothctl power on
+# bluetoothctl
+# scan on
+# pair AA:BB:CC:DD:EE:FF
+# trust AA:BB:CC:DD:EE:FF
+# connect AA:BB:CC:DD:EE:FF
+# exit
 
 ### Keybindings ###
 # You can get the names of your outputs by running: swaymsg -t get_outputs
