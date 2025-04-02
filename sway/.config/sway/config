@@ -204,7 +204,7 @@ bindsym $mod+Shift+0 move container to workspace number 10
 # Assign typical programs
 assign [app_id="org.mozilla.firefox"] workspace 2
 assign [app_id="email"] workspace 3
-assign [app_id="org.keepassxc.KeePassXC"] workspace 3
+assign [app_id="org.keepassxc.KeePassXC"] workspace 5
 assign [class="Logseq"] workspace 4
 
 set $OZONE_PLATFORM wayland
