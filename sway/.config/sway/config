@@ -203,7 +203,7 @@ bindsym $mod+Shift+0 move container to workspace number 10
 
 # App Placement
 # Assign typical programs
-assign [app_id="org.mozilla.firefox"] workspace 2
+assign [app_id="mainfox"] workspace 2
 assign [app_id="email"] workspace 3
 assign [app_id="org.keepassxc.KeePassXC"] workspace 5
 assign [class="Logseq"] workspace 4
@@ -211,7 +211,7 @@ assign [class="Logseq"] workspace 4
 set $OZONE_PLATFORM wayland
 exec_always --no-startup-id env OZONE_PLATFORM=$OZONE_PLATFORM
 ### Programs at startup
-exec firefox -P nick-home
+exec firefox --name=mainfox -P nick-home
 exec keepassxc
 exec firefox --name=email -P email https://mail.proton.me/u/0/inbox https://calendar.proton.me https://gmail.com
 exec logseq
