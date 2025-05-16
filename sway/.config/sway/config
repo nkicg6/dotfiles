@@ -110,9 +110,9 @@ output DP-3 res $resolution scale 1
 output DP-2 res $resolution scale 1.5
 exec_always ~/bin/swayclamshell.sh
 # POSITIONS #
-# if laptop is to the right of the monitor, then $laptop is 1128,0
+# if laptop is to the right of the monitor, then $laptop is resolution screen 0 Y / scale screen 0 Y (in this case 2560/1.5)
 output DP-2 pos 0 0
-output $laptop pos 1128 0
+output $laptop pos 1707 0
 # DP-3
 #output "Samsung Electric Company LU28R55 HCJR407168"
 #   Current mode: 3840x2160 @ 60.000 Hz
